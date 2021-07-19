@@ -17,6 +17,7 @@
     "url": "https://github.com/diorgenesmorais/desafio-final/issues"
   },
   "homepage": "https://github.com/diorgenesmorais/desafio-final#readme",
+  "type": "module",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
