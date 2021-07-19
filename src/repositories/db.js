@@ -13,6 +13,4 @@ const connect = new Sequelize(
     }
 );
 
-export {
-    connect
-}
+export default connect;
