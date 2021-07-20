@@ -18,8 +18,8 @@ app.get('/', (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-    logger.error(`${req.method} ${req.baseUrl} - ${err.message}`);
-    res.status(400).send({ error: err.message });
+    logger.error(`${req.method} ${req.originalUrl} - ${err.message}`);
+    res.status(500).send({ error: err.message });
 });
 
 app.listen(process.env.PORT, () => console.log(`API started in ${process.env.PORT}`));

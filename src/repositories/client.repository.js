@@ -7,5 +7,12 @@ export default {
         } catch (error) {
             throw error;
         }
+    },
+    getById: (id) => {
+        try {
+            return Cliente.findByPk(id);
+        } catch (error) {
+            throw error;
+        }
     }
 }
