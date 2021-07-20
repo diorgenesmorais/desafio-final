@@ -1,3 +1,4 @@
+import { validation } from './validator.utils.js';
 import service from '../services/client.service.js';
 
 export default {
@@ -11,10 +12,10 @@ export default {
     },
     getById: async (req, res, next) => {
         try {
-            const id = req.params.id;
-            const result = await service.findById(id);
+            validation(req);
+            const result = await service.findById(req.params.id);
             const statusCode = result ? 200 : 404;
-            const responseBody = result ? result : { message: `not found by id ${id}` };
+            const responseBody = result ? result : { message: 'not found by id' };
             res.status(statusCode).send(responseBody);
         } catch (error) {
             next(error);
