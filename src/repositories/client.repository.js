@@ -12,7 +12,12 @@ export default {
     },
     getById: async (id) => {
         try {
-            return await Cliente.findByPk(id);
+            return await Cliente.findOne({
+                attributes: ['id', 'nome', 'email', 'telefone', 'endereco'],
+                where: {
+                    id
+                }
+            });
         } catch (error) {
             throw error;
         }
