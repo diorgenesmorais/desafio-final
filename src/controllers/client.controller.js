@@ -20,5 +20,20 @@ export default {
         } catch (error) {
             next(error);
         }
+    },
+    create: async (req, res, next) => {
+        try {
+            validation(req);
+            const result = await service.save(req.body);
+            const statusCode = result ? 201 : 404;
+            const responseBody = result ? result : { message: 'not found' };
+            res.status(statusCode).send(responseBody);
+        } catch (error) {
+            // o erro foi lançado do repositório
+            if (error.name === 'SequelizeValidationError') {
+                req.statusCode = 400;
+            }
+            next(error);
+        }
     }
 }

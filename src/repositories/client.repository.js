@@ -1,16 +1,23 @@
 import Cliente from '../model/client.model.js';
 
 export default {
-    getAll: () => {
+    getAll: async () => {
         try {
-            return Cliente.findAll();
+            return await Cliente.findAll();
         } catch (error) {
             throw error;
         }
     },
-    getById: (id) => {
+    getById: async (id) => {
         try {
-            return Cliente.findByPk(id);
+            return await Cliente.findByPk(id);
+        } catch (error) {
+            throw error;
+        }
+    },
+    create: async (entity) => {
+        try {
+            return await Cliente.create(entity);
         } catch (error) {
             throw error;
         }
