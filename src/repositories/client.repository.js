@@ -21,5 +21,16 @@ export default {
         } catch (error) {
             throw error;
         }
+    },
+    destroy: async (id) => {
+        try {
+            return await Cliente.destroy({
+                where: {
+                    id
+                }
+            });
+        } catch (error) {
+            throw error;
+        }
     }
 }

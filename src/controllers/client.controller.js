@@ -35,5 +35,14 @@ export default {
             }
             next(error);
         }
+    },
+    destroy: async (req, res, next) => {
+        try {
+            const result = await service.destroy(req.params.id);
+            const statusCode = result ? 204 : 404;
+            res.status(statusCode).end();
+        } catch (error) {
+            next(error);
+        }
     }
 }

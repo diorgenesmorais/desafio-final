@@ -15,5 +15,6 @@ router.post(
     validator.body('endereco', 'O campo endereço é obrigatório').exists(),
     controller.create
 );
+router.delete('/:id', controller.destroy);
 
 export default router;
