@@ -3,7 +3,9 @@ import Cliente from '../model/client.model.js';
 export default {
     getAll: async () => {
         try {
-            return await Cliente.findAll();
+            return await Cliente.findAll({
+                attributes: ['id', 'nome', 'email', 'telefone', 'endereco']
+            });
         } catch (error) {
             throw error;
         }
