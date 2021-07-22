@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import logger from './register.logger.js';
 import clientRouter from '../src/routers/client.router.js';
+import authorRouter from '../src/routers/author.router.js';
 
 dotenv.config();
 global.logger = logger;
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/clientes', clientRouter);
+app.use('/autores', authorRouter);
 
 app.get('/', (req, res, next) => {
     res.status(200).send('Welcome!');
