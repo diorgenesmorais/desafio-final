@@ -39,5 +39,19 @@ export default {
         } catch (error) {
             throw error;
         }
+    },
+    update: async (entity) => {
+        // append RETURNING in Postgres
+        try {
+            const [ , result] = await Cliente.update(entity, {
+                where: {
+                    id: entity.id
+                },
+                returning: ['id', 'nome', 'email', 'telefone', 'endereco']
+            });
+            return result[0].dataValues;
+        } catch (error) {
+            throw error;
+        }
     }
 }

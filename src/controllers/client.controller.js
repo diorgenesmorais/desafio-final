@@ -44,5 +44,19 @@ export default {
         } catch (error) {
             next(error);
         }
+    },
+    update: async (req, res, next) => {
+        try {
+            const result = await service.update(req.body);
+            const statusCode = result ? 200 : 400;
+            const responseBody = result ? result : { message: 'bad request' };
+            res.status(statusCode).send(responseBody);
+        } catch (error) {
+            // o erro foi lançado do repositório
+            if (error.name === 'SequelizeValidationError') {
+                req.statusCode = 400;
+            }
+            next(error);
+        }
     }
 }
