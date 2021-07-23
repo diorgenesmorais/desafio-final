@@ -1,9 +1,9 @@
 import Sequelize from 'sequelize';
 import connect from '../repositories/db.js';
-import Cliente from './book.model.js';
+import Cliente from './client.model.js';
 import Livro from './book.model.js';
 
-const Venda = connect.define('livros', {
+const Venda = connect.define('vendas', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,

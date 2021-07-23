@@ -5,6 +5,7 @@ import logger from './register.logger.js';
 import clientRouter from '../src/routers/client.router.js';
 import authorRouter from '../src/routers/author.router.js';
 import bookRouter from '../src/routers/book.router.js';
+import saleRouter from '../src/routers/sale.router.js';
 
 dotenv.config();
 global.logger = logger;
@@ -16,6 +17,7 @@ app.use(cors());
 app.use('/clientes', clientRouter);
 app.use('/autores', authorRouter);
 app.use('/livros', bookRouter);
+app.use('/vendas', saleRouter);
 
 app.get('/', (req, res, next) => {
     res.status(200).send('Welcome!');
